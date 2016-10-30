@@ -42,6 +42,10 @@ RUN set -x && buildDeps='curl ca-certificates gcc patch libc6-dev'; \
     rm -rf $GOROOT_BOOTSTRAP && \
     apt-get purge -y --auto-remove $buildDeps
 
+RUN apt-get update
+RUN apt-get install -y ca-certificates
+
+
 # Add and compile tour packages
 RUN set -x && buildDeps='git'; \
     apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* && \
